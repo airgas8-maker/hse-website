@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관리자 로그인 | 영인에스티 × HSE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004499;
+      --secondary: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --dark: #0f172a;
+      --gray: #64748b;
+      --light: #f8fafc;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .security-strip {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--danger), var(--warning), var(--secondary));
+      z-index: 1000;
+    }
+    
+    .login-container {
+      background: rgba(255,255,255,0.98);
+      border-radius: 24px;
+      padding: 50px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    
+    .security-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--danger), #dc2626);
+      color: #fff;
+      padding: 10px 30px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(239,68,68,0.4);
+    }
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 40px;
+      margin-top: 20px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .logo-mark {
+      width: 55px;
+      height: 55px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 22px;
+    }
+    
+    .login-title {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    
+    .login-subtitle {
+      font-size: 15px;
+      color: var(--gray);
+    }
+    
+    .security-warning {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 1px solid #f59e0b;
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    
+    .security-warning .icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    
+    .security-warning p {
+      font-size: 13px;
+      color: #92400e;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    
+    .form-label .required {
+      color: var(--danger);
+    }
+    
+    .input-wrapper {
+      position: relative;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 16px;
+      font-family: inherit;
+      transition: all 0.3s;
+      background: #fff;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(0,102,204,0.1);
+    }
+    
+    .form-input.error {
+      border-color: var(--danger);
+      background: #fef2f2;
+    }
+    
+    /* 보안 코드 - 숫자 키패드 방식 */
+    .security-code-section {
+      margin-bottom: 25px;
+    }
+    
+    .security-code-display {
+      background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+      color: #fff;
+      padding: 24px;
+      border-radius: 16px;
+      text-align: center;
+      margin-bottom: 20px;
+      border: 2px solid rgba(212,175,55,0.3);
+    }
+    
+    .security-code-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .security-code-value {
+      font-family: 'Courier New', monospace;
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: 12px;
+      color: var(--accent-gold);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .code-input-container {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .code-digit {
+      width: 56px;
+      height: 64px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      background: #fff;
+      color: var(--dark);
+      transition: all 0.3s;
+    }
+    
+    .code-digit:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(0,102,204,0.1);
+      transform: scale(1.05);
+    }
+    
+    .code-digit.filled {
+      border-color: var(--accent-gold);
+      background: linear-gradient(135deg, #fef9e7 0%, #fffbeb 100%);
+    }
+    
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    
+    .keypad-btn {
+      padding: 18px;
+      border: none;
+      border-radius: 12px;
+      background: #f1f5f9;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--dark);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .keypad-btn:hover {
+      background: #e2e8f0;
+      transform: translateY(-2px);
+    }
+    
+    .keypad-btn:active {
+      transform: translateY(0);
+    }
+    
+    .keypad-btn.clear {
+      background: #fef2f2;
+      color: #dc2626;
+    }
+    
+    .keypad-btn.clear:hover {
+      background: #fee2e2;
+    }
+    
+    .keypad-btn.backspace {
+      background: #f0f9ff;
+      color: var(--primary);
+    }
+    
+    .keypad-btn.backspace:hover {
+      background: #e0f2fe;
+    }
+    
+    .login-btn {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,102,204,0.3);
+    }
+    
+    .login-btn:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .error-message {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 12px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      color: #dc2626;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .error-message.show {
+      display: flex;
+    }
+    
+    .attempts-warning {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin-top: 15px;
+      font-size: 13px;
+      color: #dc2626;
+      display: none;
+    }
+    
+    .attempts-warning.show {
+      display: block;
+    }
+    
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .lock-screen {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15,23,42,0.98);
+      z-index: 2000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+    }
+    
+    .lock-screen.show {
+      display: flex;
+    }
+    
+    .lock-icon {
+      font-size: 80px;
+      margin-bottom: 30px;
+    }
+    
+    .lock-title {
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 15px;
+    }
+    
+    .lock-timer {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--danger);
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="security-strip"></div>
+  
+  <div class="lock-screen" id="lockScreen">
+    <div class="lock-icon">🔒</div>
+    <h2 class="lock-title">계정이 잠금되었습니다</h2>
+    <p style="font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 30px;">로그인 시도 횟수를 초과하여 보안상 계정이 잠금되었습니다.</p>
+    <div class="lock-timer" id="lockTimer">05:00</div>
+    <p style="margin-top: 20px; color: rgba(255,255,255,0.5); font-size: 14px;">남은 시간 후에 다시 시도해 주세요</p>
+  </div>
+  
+  <div class="login-container">
+    <div class="security-badge">🔒 보안 접속 구역</div>
+    
+    <div class="login-header">
+      <div class="logo">
+        <div class="logo-mark">H</div>
+        <div style="text-align: left;">
+          <div style="font-size: 20px; font-weight: 900; color: var(--dark);">영인에스티 × HSE</div>
+          <div style="font-size: 12px; color: var(--gray);">Admin Portal</div>
+        </div>
+      </div>
+      <h1 class="login-title">관리자 로그인</h1>
+      <p class="login-subtitle">인증된 관리자만 접근 가능합니다</p>
+    </div>
+    
+    <div class="security-warning">
+      <span class="icon">⚠️</span>
+      <p><strong>보안 공지</strong><br>이 시스템은 보안 모니터링 중입니다. 불법 접근 시도는 법적 조치 대상입니다.</p>
+    </div>
+    
+    <div class="error-message" id="errorMessage">
+      <span>❌</span>
+      <span id="errorText"></span>
+    </div>
+    
+    <form id="loginForm" onsubmit="return handleLogin(event)">
+      <div class="form-group">
+        <label class="form-label">관리자 ID <span class="required">*</span></label>
+        <input type="text" id="adminId" class="form-input" placeholder="관리자 ID를 입력하세요" autocomplete="off" required>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">비밀번호 <span class="required">*</span></label>
+        <input type="password" id="adminPw" class="form-input" placeholder="비밀번호를 입력하세요" autocomplete="off" required>
+      </div>
+      
+      <div class="form-group security-code-section">
+        <label class="form-label">보안 인증 코드 <span class="required">*</span></label>
+        
+        <div class="security-code-display">
+          <div class="security-code-label">아래 코드를 입력하세요</div>
+          <div class="security-code-value" id="securityCodeDisplay">123456</div>
+        </div>
+        
+        <div class="code-input-container">
+          <input type="text" class="code-digit" id="digit1" maxlength="1" readonly>
+          <input type="text" class="code-digit" id="digit2" maxlength="1" readonly>
+          <input type="text" class="code-digit" id="digit3" maxlength="1" readonly>
+          <input type="text" class="code-digit" id="digit4" maxlength="1" readonly>
+          <input type="text" class="code-digit" id="digit5" maxlength="1" readonly>
+          <input type="text" class="code-digit" id="digit6" maxlength="1" readonly>
+        </div>
+        
+        <div class="keypad">
+          <button type="button" class="keypad-btn" onclick="enterDigit('1')">1</button>
+          <button type="button" class="keypad-btn" onclick="enterDigit('2')">2</button>
+          <button type="button" class="keypad-btn" onclick="enterDigit('3')">3</button>
+          <button type="button" class="keypad-btn" onclick="enterDigit('4')">4</button>
+          <button type="button" class="keypad-btn" onclick="enterDigit('5')">5</button>
+          <button type="button" class="keypad-btn" onclick="enterDigit('6')">6</button>
+          <button type="button" class="keypad-btn" onclick="enterDigit('7')">7</button>
+          <button type="button" class="keypad-btn" onclick="enterDigit('8')">8</button>
+          <button type="button" class="keypad-btn" onclick="enterDigit('9')">9</button>
+          <button type="button" class="keypad-btn clear" onclick="clearDigits()">C</button>
+          <button type="button" class="keypad-btn" onclick="enterDigit('0')">0</button>
+          <button type="button" class="keypad-btn backspace" onclick="backspace()">⌫</button>
+        </div>
+        
+        <input type="hidden" id="securityCodeInput" value="">
+      </div>
+      
+      <button type="submit" class="login-btn" id="loginBtn">
+        <span>🔐</span>
+        <span>보안 로그인</span>
+      </button>
+      
+      <div class="attempts-warning" id="attemptsWarning">
+        남은 시도 횟수: <strong id="attemptsLeft">3</strong>회
+      </div>
+    </form>
+    
+    <a href="index.html" class="back-link">← 메인 페이지로 돌아가기</a>
+  </div>
+
+  <script>
+    // 보안 설정
+    const CONFIG = {
+      MAX_ATTEMPTS: 5,
+      LOCKOUT_DURATION: 5 * 60 * 1000,
+      VALID_ID: 'HSEGHG',
+      VALID_PW: 'HSEGHG201@'
+    };
+    
+    let loginAttempts = parseInt(sessionStorage.getItem('loginAttempts') || '0');
+    let lockoutEndTime = parseInt(sessionStorage.getItem('lockoutEndTime') || '0');
+    let currentSecurityCode = '';
+    
+    // 키패드 기능
+    let currentDigitIndex = 0;
+    const enteredDigits = ['', '', '', '', '', ''];
+    
+    function enterDigit(digit) {
+      if (currentDigitIndex < 6) {
+        enteredDigits[currentDigitIndex] = digit;
+        const input = document.getElementById('digit' + (currentDigitIndex + 1));
+        input.value = digit;
+        input.classList.add('filled');
+        currentDigitIndex++;
+        updateHiddenInput();
+      }
+    }
+    
+    function backspace() {
+      if (currentDigitIndex > 0) {
+        currentDigitIndex--;
+        enteredDigits[currentDigitIndex] = '';
+        const input = document.getElementById('digit' + (currentDigitIndex + 1));
+        input.value = '';
+        input.classList.remove('filled');
+        updateHiddenInput();
+      }
+    }
+    
+    function clearDigits() {
+      for (let i = 0; i < 6; i++) {
+        enteredDigits[i] = '';
+        const input = document.getElementById('digit' + (i + 1));
+        input.value = '';
+        input.classList.remove('filled');
+      }
+      currentDigitIndex = 0;
+      updateHiddenInput();
+    }
+    
+    function updateHiddenInput() {
+      document.getElementById('securityCodeInput').value = enteredDigits.join('');
+    }
+    
+    // 보안 코드 생성 (숫자 6자리)
+    function generateSecurityCode() {
+      let code = '';
+      for (let i = 0; i < 6; i++) {
+        code += Math.floor(Math.random() * 10);
+      }
+      currentSecurityCode = code;
+      document.getElementById('securityCodeDisplay').textContent = code;
+      clearDigits();
+    }
+    
+    // 시도 횟수 업데이트
+    function updateAttempts() {
+      const remaining = Math.max(0, CONFIG.MAX_ATTEMPTS - loginAttempts);
+      document.getElementById('attemptsLeft').textContent = remaining;
+      
+      if (loginAttempts > 0) {
+        document.getElementById('attemptsWarning').classList.add('show');
+      }
+    }
+    
+    // 잠금 화면
+    function showLockScreen() {
+      const lockScreen = document.getElementById('lockScreen');
+      const timer = document.getElementById('lockTimer');
+      lockScreen.classList.add('show');
+      
+      const updateTimer = () => {
+        const remaining = Math.max(0, lockoutEndTime - Date.now());
+        if (remaining === 0) {
+          lockScreen.classList.remove('show');
+          loginAttempts = 0;
+          sessionStorage.removeItem('loginAttempts');
+          sessionStorage.removeItem('lockoutEndTime');
+          updateAttempts();
+          return;
+        }
+        
+        const minutes = Math.floor(remaining / 60000);
+        const seconds = Math.floor((remaining % 60000) / 1000);
+        timer.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        setTimeout(updateTimer, 1000);
+      };
+      
+      updateTimer();
+    }
+    
+    // 잠금 확인
+    function checkLockout() {
+      if (lockoutEndTime && Date.now() < lockoutEndTime) {
+        showLockScreen();
+        return true;
+      }
+      return false;
+    }
+    
+    // 에러 표시
+    function showError(message) {
+      const errorEl = document.getElementById('errorMessage');
+      document.getElementById('errorText').textContent = message;
+      errorEl.classList.add('show');
+      
+      setTimeout(() => {
+        errorEl.classList.remove('show');
+      }, 5000);
+    }
+    
+    // 로그인 처리
+    function handleLogin(e) {
+      e.preventDefault();
+      
+      if (checkLockout()) return false;
+      
+      const id = document.getElementById('adminId').value.trim();
+      const pw = document.getElementById('adminPw').value;
+      const code = document.getElementById('securityCodeInput').value;
+      
+      // 보안 코드 확인
+      if (code !== currentSecurityCode) {
+        showError('보안 인증 코드가 일치하지 않습니다.');
+        generateSecurityCode();
+        clearDigits();
+        return false;
+      }
+      
+      // 로딩
+      const btn = document.getElementById('loginBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span>인증 중...</span>';
+      
+      setTimeout(() => {
+        if (id === CONFIG.VALID_ID && pw === CONFIG.VALID_PW) {
+          // 성공
+          sessionStorage.setItem('adminLoggedIn', 'true');
+          sessionStorage.setItem('loginTime', Date.now().toString());
+          sessionStorage.removeItem('loginAttempts');
+          window.location.href = 'admin-dashboard.html';
+        } else {
+          // 실패
+          loginAttempts++;
+          sessionStorage.setItem('loginAttempts', loginAttempts.toString());
+          
+          const remaining = CONFIG.MAX_ATTEMPTS - loginAttempts;
+          
+          if (remaining <= 0) {
+            lockoutEndTime = Date.now() + CONFIG.LOCKOUT_DURATION;
+            sessionStorage.setItem('lockoutEndTime', lockoutEndTime.toString());
+            showLockScreen();
+          } else {
+            showError(`아이디 또는 비밀번호가 올바르지 않습니다. (${remaining}회 남음)`);
+            updateAttempts();
+            generateSecurityCode();
+            clearDigits();
+          }
+          
+          btn.disabled = false;
+          btn.innerHTML = '<span>🔐</span><span>보안 로그인</span>';
+        }
+      }, 1000);
+      
+      return false;
+    }
+    
+    // 초기화
+    window.addEventListener('load', function() {
+      generateSecurityCode();
+      updateAttempts();
+      checkLockout();
+      
+      // 이미 로그인 확인
+      if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+        const loginTime = parseInt(sessionStorage.getItem('loginTime') || '0');
+        if (Date.now() - loginTime < 30 * 60 * 1000) {
+          window.location.href = 'admin-dashboard.html';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

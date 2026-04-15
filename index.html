@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  
+  <!-- 카카오톡/소셜 미디어 공유 메타태그 -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="영인에스티 × HSE | 프리미엄 탄소중립/CCUS 통합 플랫폼">
+  <meta property="og:description" content="실시간 측정 → 배출 저감 → AI-MRV 검증 → 자동 보고 → 탄소중립 대응. 20+ 프리미엄 환경설비">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630/1a237e/ffffff?text=Young+In+ST+x+HSE">
+  <meta property="og:url" content="file:///C:/Users/USER/.verdent/verdent-projects/new-project/youngin-hse/index.html">
+  
+  <title>영인에스티 × HSE | 프리미엄 탄소중립/CCUS 통합 플랫폼</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-light: #3b82f6;
+      --primary-dark: #004499;
+      --accent-gold: #d4af37;
+      --accent-gold-light: #f4d03f;
+      --accent-copper: #b87333;
+      --secondary: #10b981;
+      --secondary-light: #34d399;
+      --dark: #0a0f1a;
+      --dark-light: #1a2332;
+      --dark-lighter: #2d3748;
+      --gray: #64748b;
+      --gray-light: #94a3b8;
+      --light: #f8fafc;
+      --white: #ffffff;
+      
+      --gradient-hero: linear-gradient(135deg, #0a0f1a 0%, #1e3a5f 30%, #0f2847 60%, #0a0f1a 100%);
+      --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+      --gradient-blue: linear-gradient(135deg, #0066cc 0%, #3b82f6 50%, #0066cc 100%);
+      --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      --gradient-shine: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+      --shadow: 0 4px 20px rgba(0,0,0,0.15);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.2);
+      --shadow-xl: 0 20px 60px rgba(0,0,0,0.3);
+      --shadow-gold: 0 10px 40px rgba(212,175,55,0.3);
+      --shadow-blue: 0 10px 40px rgba(0,102,204,0.3);
+      
+      --transition-fast: 0.2s ease;
+      --transition: 0.3s ease;
+      --transition-slow: 0.5s ease;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { 
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body { 
+      font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 4px; }
+    
+    /* 프리미엄 헤더 */
+    .premium-header { 
+      background: rgba(10,15,26,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+      padding: 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: all var(--transition);
+    }
+    
+    .header-inner { 
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+    
+    .brand { 
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+    }
+    
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      background: var(--gradient-gold);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 22px;
+      box-shadow: var(--shadow-gold);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .brand-logo::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: var(--gradient-shine);
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+    
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-main { 
+      font-size: 20px; 
+      font-weight: 900; 
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+    .brand-main span { 
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .brand-sub { 
+      font-size: 11px; 
+      color: var(--accent-gold);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    
+    .nav-desktop { display: flex; gap: 8px; }
+    .nav-desktop a { 
+      text-decoration: none; 
+      color: var(--gray-light);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: all var(--transition);
+      position: relative;
+    }
+    .nav-desktop a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-gold);
+      transition: all var(--transition);
+      transform: translateX(-50%);
+    }
+    .nav-desktop a:hover { color: var(--white); }
+    .nav-desktop a:hover::after { width: 60%; }
+    
+    .mobile-menu-btn {
+      display: none;
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 12px;
+      color: var(--white);
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    /* 프리미엄 히어로 */
+    .premium-hero { 
+      background: var(--gradient-hero);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .premium-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(0,102,204,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(212,175,55,0.1) 0%, transparent 40%);
+    }
+    
+    .hero-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--accent-gold);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 20s infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(100vh) translateX(0); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+    }
+    
+    .hero-content {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-badge { 
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(212,175,55,0.15);
+      color: var(--accent-gold-light);
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      border: 1px solid rgba(212,175,55,0.3);
+      backdrop-filter: blur(10px);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--secondary);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+    
+    .hero-title { 
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+    
+    .hero-title .highlight { 
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero-subtitle { 
+      font-size: clamp(18px, 2.5vw, 24px);
+      margin-bottom: 20px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+    }
+    
+    .hero-desc { 
+      font-size: 16px;
+      margin-bottom: 40px;
+      color: rgba(255,255,255,0.6);
+      max-width: 540px;
+      line-height: 1.8;
+    }
+    
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    
+    .btn-premium {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 36px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-premium::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-shine);
+      transition: all 0.5s;
+    }
+    
+    .btn-premium:hover::before { left: 100%; }
+    
+    .btn-gold {
+      background: var(--gradient-gold);
+      color: var(--dark);
+      box-shadow: var(--shadow-gold);
+    }
+    
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px rgba(212,175,55,0.4);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    
+    .btn-outline:hover {
+      border-color: var(--accent-gold);
+      background: rgba(212,175,55,0.1);
+    }
+    
+    .hero-stats { 
+      display: flex;
+      gap: 60px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .stat-item { 
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    .stat-item::after {
+      content: '';
+      position: absolute;
+      right: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .stat-item:last-child::after { display: none; }
+    
+    .stat-number { 
+      font-size: 48px;
+      font-weight: 900;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .stat-label { 
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .hero-circle {
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0,102,204,0.2) 0%, rgba(212,175,55,0.15) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: rotate 40s linear infinite;
+      border: 2px solid rgba(212,175,55,0.2);
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .hero-circle-inner {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: var(--gradient-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212,175,55,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: rotate-reverse 40s linear infinite;
+      box-shadow: var(--shadow-gold);
+    }
+    
+    @keyframes rotate-reverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    
+    .hero-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    }
+    
+    .hero-circle-text {
+      color: var(--white);
+      font-size: 28px;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.3;
+    }
+    
+    .hero-circle-text span {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 36px;
+    }
+    
+    /* 섹션 공통 */
+    section { padding: 120px 0; }
+    .container { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+    
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 80px;
+    }
+    
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: rgba(0,102,204,0.1);
+      color: var(--primary);
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(0,102,204,0.2);
+    }
+    
+    .section-title { 
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 900;
+      margin-bottom: 20px;
+      color: var(--dark);
+      letter-spacing: -1px;
+    }
+    
+    .section-title span {
+      background: var(--gradient-blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .section-subtitle { 
+      color: var(--gray);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+    
+    /* 제품 섹션 */
+    .products-premium { 
+      background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%);
+      position: relative;
+    }
+    
+    .products-premium::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    }
+    
+    .premium-tabs { 
+      display: flex; 
+      justify-content: center; 
+      gap: 12px; 
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+      background: var(--white);
+      padding: 16px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .premium-tab { 
+      padding: 16px 32px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--gray);
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .premium-tab::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--gradient-gold);
+      transition: all var(--transition);
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+    
+    .premium-tab:hover { 
+      color: var(--dark);
+      background: rgba(0,102,204,0.05);
+    }
+    
+    .premium-tab.active { 
+      background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(212,175,55,0.1) 100%);
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    .premium-tab.active::before { width: 60%; }
+    
+    .products-grid { 
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 32px;
+    }
+    
+    .product-premium-card { 
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all var(--transition-slow);
+      border: 1px solid rgba(0,0,0,0.06);
+      position: relative;
+    }
+    
+    .product-premium-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-gold);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+    
+    .product-premium-card:hover { 
+      transform: translateY(-12px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(212,175,55,0.3);
+    }
+    
+    .product-premium-card:hover::before { transform: scaleX(1); }
+    
+    .product-image-container {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    }
+    
+    .product-premium-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+    
+    .product-premium-card:hover .product-premium-image {
+      transform: scale(1.15);
+    }
+    
+    .product-image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray);
+      gap: 12px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+    
+    .product-image-placeholder .icon {
+      font-size: 64px;
+      opacity: 0.4;
+    }
+    
+    .product-category-tag {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background: rgba(10,15,26,0.85);
+      color: var(--accent-gold);
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212,175,55,0.3);
+      z-index: 2;
+    }
+    
+    .product-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(10,15,26,0.8) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 20px;
+    }
+    
+    .product-premium-card:hover .product-image-overlay { opacity: 1; }
+    
+    .view-detail-btn {
+      padding: 12px 28px;
+      background: var(--gradient-gold);
+      color: var(--dark);
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      transform: translateY(20px);
+      transition: transform var(--transition);
+    }
+    
+    .product-premium-card:hover .view-detail-btn { transform: translateY(0); }
+    
+    .product-premium-content { padding: 28px; }
+    
+    .product-premium-code {
+      font-size: 12px;
+      color: var(--accent-gold);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    
+    .product-premium-name { 
+      font-size: 22px;
+      margin-bottom: 6px;
+      color: var(--dark);
+      font-weight: 800;
+    }
+    
+    .product-premium-en { 
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    
+    .product-premium-desc { 
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.7;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .product-premium-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    
+    .arrow-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 20px;
+      transition: all var(--transition);
+    }
+    
+    .product-premium-card:hover .arrow-icon {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateX(5px);
+    }
+    
+    /* 모달 */
+    .premium-modal { 
+      display: none; 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(10,15,26,0.9);
+      z-index: 3000; 
+      overflow-y: auto;
+      backdrop-filter: blur(10px);
+    }
+    
+    .premium-modal-content { 
+      background: var(--white); 
+      max-width: 1100px; 
+      margin: 40px auto;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+      animation: modalSlideUp 0.5s ease;
+    }
+    
+    @keyframes modalSlideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .modal-hero {
+      position: relative;
+      height: 450px;
+      background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+      overflow: hidden;
+    }
+    
+    .modal-hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+    
+    .modal-hero-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      gap: 20px;
+    }
+    
+    .modal-hero-placeholder .icon { font-size: 120px; opacity: 0.3; }
+    
+    .modal-close-btn { 
+      position: absolute; 
+      top: 24px; 
+      right: 24px; 
+      width: 56px;
+      height: 56px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px; 
+      cursor: pointer; 
+      border: none;
+      transition: all var(--transition);
+      z-index: 10;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .modal-close-btn:hover { 
+      background: var(--white);
+      transform: rotate(90deg) scale(1.1);
+    }
+    
+    .modal-category-badge {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      padding: 14px 28px;
+      background: var(--gradient-gold);
+      color: var(--dark);
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: var(--shadow);
+    }
+    
+    .modal-body { padding: 48px; }
+    
+    .modal-header-section {
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid rgba(0,0,0,0.06);
+    }
+    
+    .modal-product-code {
+      font-size: 14px;
+      color: var(--accent-gold);
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    
+    .modal-product-name { 
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: var(--dark);
+      letter-spacing: -1px;
+    }
+    
+    .modal-product-en {
+      font-size: 18px;
+      color: var(--gray);
+      font-weight: 500;
+    }
+    
+    .modal-section { margin-bottom: 48px; }
+    
+    .modal-section-title {
+      font-size: 20px;
+      color: var(--dark);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
+    
+    .modal-section-title .icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(212,175,55,0.1) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+    
+    .modal-desc {
+      font-size: 17px;
+      color: var(--gray);
+      line-height: 1.9;
+      padding: 28px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 16px;
+      border-left: 4px solid var(--accent-gold);
+    }
+    
+    .features-grid-premium {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    
+    .feature-premium-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px;
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: all var(--transition);
+    }
+    
+    .feature-premium-item:hover {
+      border-color: rgba(212,175,55,0.3);
+      box-shadow: var(--shadow);
+      transform: translateX(8px);
+    }
+    
+    .feature-check {
+      width: 32px;
+      height: 32px;
+      background: var(--gradient-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      font-size: 14px;
+      flex-shrink: 0;
+      font-weight: 900;
+    }
+    
+    .feature-premium-item span {
+      font-size: 15px;
+      color: var(--dark);
+      font-weight: 600;
+      line-height: 1.6;
+      padding-top: 4px;
+    }
+    
+    .specs-premium-table { 
+      width: 100%; 
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    
+    .specs-premium-table th, .specs-premium-table td { 
+      padding: 24px;
+      text-align: left;
+    }
+    
+    .specs-premium-table th { 
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      width: 200px; 
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .specs-premium-table td {
+      font-size: 16px;
+      color: var(--gray);
+      font-weight: 500;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    
+    .specs-premium-table tr:last-child th,
+    .specs-premium-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .modal-actions-premium {
+      display: flex;
+      gap: 16px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 2px solid rgba(0,0,0,0.06);
+    }
+    
+    /* 복합촉매 섹션 */
+    .catalyst-section {
+      background: linear-gradient(135deg, #0a0f1a 0%, #1a2332 50%, #0f2847 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .catalyst-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .catalyst-section .section-title,
+    .catalyst-section .section-subtitle {
+      color: var(--white);
+    }
+    
+    .catalyst-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .catalyst-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .catalyst-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-gold);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+    
+    .catalyst-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212,175,55,0.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    
+    .catalyst-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .catalyst-number {
+      width: 48px;
+      height: 48px;
+      background: var(--gradient-gold);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .catalyst-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    
+    .catalyst-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+    
+    /* 프로세스 섹션 */
+    .process-section {
+      background: var(--white);
+    }
+    
+    .process-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent-gold), var(--primary));
+      transform: translateX(-50%);
+    }
+    
+    .process-step {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 40px 0;
+      position: relative;
+    }
+    
+    .process-step:nth-child(even) .process-content {
+      grid-column: 2;
+    }
+    
+    .process-step:nth-child(even) .process-visual {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    
+    .process-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .process-icon-wrapper {
+      width: 160px;
+      height: 160px;
+      background: linear-gradient(135deg, var(--light) 0%, #e2e8f0 100%);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .process-icon-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: var(--gradient-gold);
+      z-index: -1;
+    }
+    
+    .process-icon {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+    
+    .process-step-num {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .process-content {
+      padding: 32px;
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    
+    .process-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    
+    .process-desc {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    
+    .process-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .process-feature-tag {
+      padding: 8px 16px;
+      background: linear-gradient(135deg, rgba(0,102,204,0.1) 0%, rgba(212,175,55,0.1) 100%);
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    /* 주문 프로세스 섹션 */
+    .order-section {
+      background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%);
+    }
+    
+    .order-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+    
+    .order-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.06);
+      position: relative;
+      transition: all var(--transition);
+    }
+    
+    .order-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .order-card::after {
+      content: '→';
+      position: absolute;
+      right: -26px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 32px;
+      color: var(--accent-gold);
+      font-weight: 300;
+    }
+    
+    .order-card:last-child::after { display: none; }
+    
+    .order-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-gold);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 24px;
+      box-shadow: var(--shadow-gold);
+    }
+    
+    .order-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    
+    .order-desc {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+    
+    .survey-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    
+    .survey-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    
+    .survey-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid rgba(0,0,0,0.06);
+    }
+    
+    .survey-badge {
+      padding: 10px 20px;
+      background: var(--gradient-gold);
+      color: var(--dark);
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    
+    .survey-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+    
+    .survey-list {
+      list-style: none;
+    }
+    
+    .survey-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--gray);
+    }
+    
+    .survey-list li::before {
+      content: '✓';
+      width: 24px;
+      height: 24px;
+      background: rgba(16,185,129,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--secondary);
+      font-size: 12px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    
+    .survey-list li:last-child { border-bottom: none; }
+    
+    /* 반응형 */
+    @media (max-width: 1200px) {
+      .hero-content { grid-template-columns: 1fr; gap: 60px; text-align: center; }
+      .hero-visual { order: -1; }
+      .hero-circle { width: 320px; height: 320px; }
+      .hero-circle-inner { width: 240px; height: 240px; }
+      .hero-desc { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .stat-item::after { display: none; }
+      .features-grid-premium { grid-template-columns: 1fr; }
+      .process-timeline::before { left: 30px; }
+      .process-step { grid-template-columns: 1fr; gap: 30px; }
+      .process-step:nth-child(even) .process-content,
+      .process-step:nth-child(even) .process-visual { grid-column: 1; }
+      .process-visual { justify-content: flex-start; }
+      .order-flow { grid-template-columns: 1fr; }
+      .order-card::after { display: none; }
+      .survey-grid { grid-template-columns: 1fr; }
+    }
+    
+    @media (max-width: 768px) {
+      .header-inner { height: 70px; padding: 0 16px; }
+      .nav-desktop { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .hero-content { padding: 0 16px; }
+      .premium-hero { padding: 100px 0 60px; }
+      .hero-title { font-size: 32px; }
+      .hero-circle { width: 280px; height: 280px; }
+      .hero-circle-inner { width: 200px; height: 200px; }
+      .hero-stats { flex-direction: column; gap: 24px; }
+      section { padding: 80px 0; }
+      .container { padding: 0 16px; }
+      .premium-tabs { padding: 12px; gap: 8px; }
+      .premium-tab { padding: 12px 20px; font-size: 13px; }
+      .products-grid { grid-template-columns: 1fr; gap: 24px; }
+      .product-image-container { height: 220px; }
+      .modal-body { padding: 24px; }
+      .modal-product-name { font-size: 28px; }
+      .modal-hero { height: 300px; }
+      .specs-premium-table th, .specs-premium-table td { padding: 16px; }
+      .specs-premium-table th { width: 140px; font-size: 12px; }
+      .modal-actions-premium { flex-direction: column; }
+      .catalyst-grid { grid-template-columns: 1fr; }
+      .process-icon-wrapper { width: 120px; height: 120px; }
+      .process-icon { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 프리미엄 헤더 -->
+<header class="premium-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">H</div>
+      <div class="brand-text">
+        <div class="brand-main">영인에스티 <span>×</span> HSE</div>
+        <div class="brand-sub">Premium Solutions</div>
+      </div>
+    </a>
+    
+    <nav class="nav-desktop">
+      <a href="#products">제품</a>
+      <a href="#catalyst">복합촉매</a>
+      <a href="#process">프로세스</a>
+      <a href="#order">주문상담</a>
+    </nav>
+    
+    <div style="display: flex; gap: 12px;">
+      <a href="admin.html" class="btn-premium btn-outline" style="padding: 12px 24px; font-size: 13px;">관리자</a>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- 프리미엄 히어로 -->
+<section class="premium-hero">
+  <div class="hero-particles" id="particles"></div>
+  
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge">2050 Net-Zero / CCUS / AI-MRV</div>
+      
+      <h1 class="hero-title">
+        영인에스티 × HSE<br>
+        <span class="highlight">프리미엄<br>탄소중립 솔루션</span>
+      </h1>
+      
+      <p class="hero-subtitle">측정 · 저감 · AI 검증의 통합 플랫폼</p>
+      
+      <p class="hero-desc">실시간 측정 → 배출 저감 → AI-MRV 검증 → 자동 보고 → 탄소중립 대응<br>영인에스티와 HSE Team이 공동 개발한 프리미엄 환경 솔루션</p>
+      
+      <div class="hero-buttons">
+        <a href="#products" class="btn-premium btn-gold">
+          <span>20+ 프리미엄 제품</span>
+          <span>→</span>
+        </a>
+        <a href="inquiry.html" class="btn-premium btn-outline">견적 문의하기</a>
+      </div>
+      
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">프리미엄 제품</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">지식재산권</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99%</div>
+          <div class="stat-label">처리효율</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="hero-circle">
+        <div class="hero-circle-inner">
+          <div class="hero-icon">🌿</div>
+          <div class="hero-circle-text">
+            2050<br>
+            <span>Net-Zero</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 프리미엄 제품 섹션 -->
+<section class="products-premium" id="products">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">✦ Premium Products</span>
+      <h2 class="section-title">프리미엄 <span>환경설비 20+ 종</span></h2>
+      <p class="section-subtitle">영인에스티와 HSE Team이 공동 개발한 20여 종의 프리미엄 환경설비<br>클릭하여 상세 정보와 고해상도 이미지를 확인하세요</p>
+    </div>
+    
+    <div class="premium-tabs">
+      <button class="premium-tab active" onclick="filterProducts('all')">전체 제품</button>
+      <button class="premium-tab" onclick="filterProducts('oxidation')">연소산화</button>
+      <button class="premium-tab" onclick="filterProducts('catalytic')">촉매연소</button>
+      <button class="premium-tab" onclick="filterProducts('recovery')">회수·자원화</button>
+      <button class="premium-tab" onclick="filterProducts('mobile')">모듈형</button>
+      <button class="premium-tab" onclick="filterProducts('catalyst')">복합촉매</button>
+    </div>
+    
+    <div class="products-grid" id="productList"></div>
+  </div>
+</section>
+
+<!-- 복합촉매 섹션 -->
+<section class="catalyst-section" id="catalyst">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label" style="background: rgba(212,175,55,0.2); color: var(--accent-gold); border-color: rgba(212,175,55,0.3);">✦ HSE Catalyst</span>
+      <h2 class="section-title" style="color: var(--white);">HSE <span style="background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">복합촉매</span> 9종</h2>
+      <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">다양한 오염물질을 동시에 처리하는 HSE만의 고성능 복합촉매 시스템</p>
+    </div>
+    
+    <div class="catalyst-grid">
+      <div class="catalyst-card">
+        <div class="catalyst-number">01</div>
+        <div class="catalyst-name">메탄산화촉매 (MOC·PMOC)</div>
+        <div class="catalyst-desc">축산업 및 폐기물 처리장에서 발생하는 메탄가스를 고효율로 산화분해하는 프리미엄 촉매</div>
+      </div>
+      
+      <div class="catalyst-card">
+        <div class="catalyst-number">02</div>
+        <div class="catalyst-name">과불화탄소(PFCs) 분해촉매</div>
+        <div class="catalyst-desc">반도체 공정에서 발생하는 PFCs를 초저온에서 효과적으로 분해하는 첨단 촉매</div>
+      </div>
+      
+      <div class="catalyst-card">
+        <div class="catalyst-number">03</div>
+        <div class="catalyst-name">HVOCs 분해촉매</div>
+        <div class="catalyst-desc">고농도 휘발성 유기화합물을 효과적으로 처리하는 고성능 촉매 시스템</div>
+      </div>
+      
+      <div class="catalyst-card">
+        <div class="catalyst-number">04</div>
+        <div class="catalyst-name">CVOCs 분해촉매</div>
+        <div class="catalyst-desc">염소계 휘발성 유기화합물을 안전하게 분해하는 특수 촉매</div>
+      </div>
+      
+      <div class="catalyst-card">
+        <div class="catalyst-number">05</div>
+        <div class="catalyst-name">초저온용 고활성촉매</div>
+        <div class="catalyst-desc">150℃ 이하의 초저온에서도 고활성을 발휘하는 에너지 절약형 촉매</div>
+      </div>
+      
+      <div class="catalyst-card">
+        <div class="catalyst-number">06</div>
+        <div class="catalyst-name">초저가형 고온촉매</div>
+        <div class="catalyst-desc">고온 환경에서도 경제적인 가격으로 장기간 사용 가능한 고내구성 촉매</div>
+      </div>
+      
+      <div class="catalyst-card">
+        <div class="catalyst-number">07</div>
+        <div class="catalyst-name">내황(S)성 촉매</div>
+        <div class="catalyst-desc">황 화합물이 포함된 배출가스에서도 활성을 유지하는 내구성 촉매</div>
+      </div>
+      
+      <div class="catalyst-card">
+        <div class="catalyst-number">08</div>
+        <div class="catalyst-name">소비자 주문형·맞춤형촉매</div>
+        <div class="catalyst-desc">특정 오염물질과 공정 조건에 최적화된 맞춤형 촉매 개발 및 제조</div>
+      </div>
+      
+      <div class="catalyst-card">
+        <div class="catalyst-number">09</div>
+        <div class="catalyst-name">SCR NOx 저감 촉매</div>
+        <div class="catalyst-desc">선택적 촉매환원 방식으로 질소산화물을 효과적으로 저감하는 환경 촉매</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 설계 프로세스 섹션 -->
+<section class="process-section" id="process">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">✦ Design Process</span>
+      <h2 class="section-title">대기오염방지시설 <span>6단계 설계 프로세스</span></h2>
+      <p class="section-subtitle">STEP 1부터 STEP 6까지 체계적인 공정으로 최적의 솔루션을 제공합니다</p>
+    </div>
+    
+    <div class="process-timeline">
+      <!-- STEP 1 -->
+      <div class="process-step">
+        <div class="process-visual">
+          <div class="process-icon-wrapper">
+            <div class="process-icon">🔍</div>
+            <div class="process-step-num">STEP 1</div>
+          </div>
+        </div>
+        <div class="process-content">
+          <h3 class="process-title">현장 진단</h3>
+          <p class="process-desc">오염원 분석, 배출 현황 조사, 공정 특성 파악을 통해 최적의 솔루션을 설계합니다. 현장의 실제 데이터를 기반으로 정확한 진단을 수행합니다.</p>
+          <div class="process-features">
+            <span class="process-feature-tag">오염원 분석</span>
+            <span class="process-feature-tag">배출 현황 조사</span>
+            <span class="process-feature-tag">공정 특성 파악</span>
+            <span class="process-feature-tag">데이터 수집</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- STEP 2 -->
+      <div class="process-step">
+        <div class="process-visual">
+          <div class="process-icon-wrapper">
+            <div class="process-icon">⚙️</div>
+            <div class="process-step-num">STEP 2</div>
+          </div>
+        </div>
+        <div class="process-content">
+          <h3 class="process-title">공법 선정</h3>
+          <p class="process-desc">최적 처리 공법 결정, 장치 사양 확정, 경제성 분석을 수행합니다. 다양한 처리 방식 중 현장에 가장 적합한 공법을 선정합니다.</p>
+          <div class="process-features">
+            <span class="process-feature-tag">처리 공법 결정</span>
+            <span class="process-feature-tag">장치 사양 확정</span>
+            <span class="process-feature-tag">경제성 분석</span>
+            <span class="process-feature-tag">최적안 도출</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- STEP 3 -->
+      <div class="process-step">
+        <div class="process-visual">
+          <div class="process-icon-wrapper">
+            <div class="process-icon">📐</div>
+            <div class="process-step-num">STEP 3</div>
+          </div>
+        </div>
+        <div class="process-content">
+          <h3 class="process-title">맞춤형 설계</h3>
+          <p class="process-desc">3D 모델링, 공정 시뮬레이션, 열유동 해석을 통한 정밀 설계를 진행합니다. 첨단 설계 소프트웨어를 활용하여 최적의 설계를 완성합니다.</p>
+          <div class="process-features">
+            <span class="process-feature-tag">3D 모델링</span>
+            <span class="process-feature-tag">공정 시뮬레이션</span>
+            <span class="process-feature-tag">열유동 해석</span>
+            <span class="process-feature-tag">정밀 설계</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- STEP 4 -->
+      <div class="process-step">
+        <div class="process-visual">
+          <div class="process-icon-wrapper">
+            <div class="process-icon">🏭</div>
+            <div class="process-step-num">STEP 4</div>
+          </div>
+        </div>
+        <div class="process-content">
+          <h3 class="process-title">설비 제작</h3>
+          <p class="process-desc">주요 부품 제작, 품질 검사, 내압 시험을 통해 고품질 설비를 생산합니다. 엄격한 품질 관리 시스템으로 완벽한 제품을 만듭니다.</p>
+          <div class="process-features">
+            <span class="process-feature-tag">부품 제작</span>
+            <span class="process-feature-tag">품질 검사</span>
+            <span class="process-feature-tag">내압 시험</span>
+            <span class="process-feature-tag">QC/QM 관리</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- STEP 5 -->
+      <div class="process-step">
+        <div class="process-visual">
+          <div class="process-icon-wrapper">
+            <div class="process-icon">🔧</div>
+            <div class="process-step-num">STEP 5</div>
+          </div>
+        </div>
+        <div class="process-content">
+          <h3 class="process-title">설치 및 시운전</h3>
+          <p class="process-desc">현장 설치, 성능 테스트, 품질 확인을 통해 완벽한 시스템을 구축합니다. 전문 엔지니어 팀이 직접 설치와 시운전을 진행합니다.</p>
+          <div class="process-features">
+            <span class="process-feature-tag">현장 설치</span>
+            <span class="process-feature-tag">성능 테스트</span>
+            <span class="process-feature-tag">품질 확인</span>
+            <span class="process-feature-tag">전문 엔지니어</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- STEP 6 -->
+      <div class="process-step">
+        <div class="process-visual">
+          <div class="process-icon-wrapper">
+            <div class="process-icon">🛡️</div>
+            <div class="process-step-num">STEP 6</div>
+          </div>
+        </div>
+        <div class="process-content">
+          <h3 class="process-title">사후 관리</h3>
+          <p class="process-desc">정기 점검, 부품 교체, 원격 모니터링을 통한 지속적인 서비스를 제공합니다. 24/7 서비스 네트워크로 고객의 편의를 보장합니다.</p>
+          <div class="process-features">
+            <span class="process-feature-tag">정기 점검</span>
+            <span class="process-feature-tag">부품 교체</span>
+            <span class="process-feature-tag">원격 모니터링</span>
+            <span class="process-feature-tag">24/7 서비스</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 주문 프로세스 섹션 -->
+<section class="order-section" id="order">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">✦ Order Process</span>
+      <h2 class="section-title">주문 <span>프로세스</span></h2>
+      <p class="section-subtitle">HSE-1 기초 설문과 HSE-2 세부 정보를 통해 정확한 견적을 산출합니다</p>
+    </div>
+    
+    <div class="order-flow">
+      <div class="order-card">
+        <div class="order-icon">📝</div>
+        <h3 class="order-title">HSE-1 기초 설문</h3>
+        <p class="order-desc">업종, 배출가스 유량, 처리 대상 오염물질, 예산 범위 등 기초 정보 수집</p>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-icon">⚙️</div>
+        <h3 class="order-title">HSE-2 세부 정보</h3>
+        <p class="order-desc">촉매 종류, 설치 공간, 가동 시간, 유지보수 주기 등 기술 사양 확정</p>
+      </div>
+      
+      <div class="order-card">
+        <div class="order-icon">📋</div>
+        <h3 class="order-title">견적 산출 & 주문</h3>
+        <p class="order-desc">설문 완료 → 견적 산출 → 주문서 작성 → 확인 순서로 진행됩니다</p>
+      </div>
+    </div>
+    
+    <div class="survey-grid">
+      <div class="survey-card">
+        <div class="survey-header">
+          <span class="survey-badge">HSE-1</span>
+          <h3 class="survey-title">기초 설문 항목</h3>
+        </div>
+        
+        <ul class="survey-list">
+          <li>업종 (반도체, 석유화학, 자동차, 식품 등)</li>
+          <li>배출가스 유량 (Nm³/h)</li>
+          <li>처리 대상 오염물질 (VOCs, 메탄, PFCs 등)</li>
+          <li>현재 농도 및 허용 기준</li>
+          <li>예산 범위</li>
+          <li>희망 설치 일정</li>
+          <li>기존 처리 설비 유무</li>
+        </ul>
+      </div>
+      
+      <div class="survey-card">
+        <div class="survey-header">
+          <span class="survey-badge">HSE-2</span>
+          <h3 class="survey-title">세부 기술 사양</h3>
+        </div>
+        
+        <ul class="survey-list">
+          <li>촉매 종류 (MOC, PFCs 분해, HVOCs, CVOCs 등 9종)</li>
+          <li>설치 공간 크기 및 제약사항</li>
+          <li>가동 시간 (연속/간헐)</li>
+          <li>유지보수 주기 및 방식</li>
+          <li>제어 시스템 요구사항</li>
+          <li>에너지 회수 필요 여부</li>
+          <li>특수 규격 및 인증 요구사항</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 프리미엄 모달 -->
+<div class="premium-modal" id="productModal">
+  <div class="premium-modal-content">
+    <div class="modal-hero" id="modalHero">
+      <button class="modal-close-btn" onclick="closeModal()">×</button>
+      <div class="modal-category-badge" id="modalCategory">카테고리</div>
+    </div>
+    
+    <div class="modal-body" id="modalBodyContent"></div>
+  </div>
+</div>
+
+<script>
+// 파티클 생성
+function createParticles() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 25; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 20 + 's';
+    particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+    container.appendChild(particle);
+  }
+}
+createParticles();
+
+// 제품 데이터 (20종) - products.js와 동일한 ID 사용
+const productsData = [
+  { id: 'rto', category: 'oxidation', catName: '연소산화', code: 'HSE-RTO-001', name: 'RTO', fullName: 'Regenerative Thermal Oxidizer', desc: '고효율 축열식 열교환기를 활용하여 VOCs를 800℃ 이상의 고온에서 완전 연소분해하는 프리미엄 시스템입니다.', image: null, features: ['열효율 95% 이상 (세라믹 축열체)', '처리효율 99% 이상', '다양한 농도 범위 대응', '자동 화염 제어 시스템', '저녹스 버너 적용', 'PLC 기반 자동 운전'], specs: { capacity: '1,000 ~ 100,000 Nm³/h', hours: '24시간 연속 운전', install: '실내/실외 설치 가능', temp: '0 ~ 200℃', pressure: '-500 ~ +500 mmAq', humidity: '0 ~ 95% RH' } },
+  { id: 'c-rto', category: 'oxidation', catName: '연소산화', code: 'HSE-CRT-002', name: 'C-RTO', fullName: 'Concentrated RTO', desc: '희박한 VOCs를 농축 장치로 고농도로 농축 후 RTO로 처리하는 고효율 시스템입니다.', image: null, features: ['희박가스(수 ppm) 효율적 처리', '농축비 10~20배', '연료비 50% 이상 절감', '농축휠(제올라이트/활성탄)', '자연 연소 가능', '에너지 회수 및 재이용'], specs: { capacity: '5,000 ~ 200,000 Nm³/h', hours: '24시간 연속 운전', install: '실내/실외 설치 가능', temp: '0 ~ 100℃', pressure: '-300 ~ +300 mmAq', humidity: '0 ~ 80% RH' } },
+  { id: 'rco', category: 'catalytic', catName: '촉매연소', code: 'HSE-RCO-003', name: 'RCO', fullName: 'Regenerative Catalytic Oxidizer', desc: '귀금속 촉매를 사용하여 VOCs를 250~450℃의 저온에서 산화분해하는 프리미엄 시스템입니다.', image: null, features: ['저온 연소 (250~450℃)', '귀금속 촉매(백금/팔라듐)', '열효율 95% 이상', '처리효율 99% 이상', '열충격에 강한 세라믹 촉매', '할로겐 계 VOCs 처리'], specs: { capacity: '500 ~ 50,000 Nm³/h', hours: '24시간 연속 운전', install: '실내/실외 설치 가능', temp: '0 ~ 150℃', pressure: '-500 ~ +500 mmAq', humidity: '0 ~ 95% RH' } },
+  { id: 'c-rco', category: 'catalytic', catName: '촉매연소', code: 'HSE-CRC-004', name: 'C-RCO', fullName: 'Concentrated RCO', desc: '희박가스를 농축한 후 RCO로 처리하는 경제적이고 고효율의 시스템입니다.', image: null, features: ['농축 + 촉매연소 시너지', '최저 운전 비용', '자연 연소 가능 농도', '고효율 에너지 회수', '소형화 설계 가능', '친환경적 처리'], specs: { capacity: '3,000 ~ 100,000 Nm³/h', hours: '24시간 연속 운전', install: '실내/실외 설치 가능', temp: '0 ~ 80℃', pressure: '-300 ~ +300 mmAq', humidity: '0 ~ 80% RH' } },
+  { id: 'co', category: 'catalytic', catName: '촉매연소', code: 'HSE-CO-005', name: 'CO', fullName: 'Catalytic Oxidizer', desc: '축열체 없이 촉매만을 사용한 간결한 구조의 프리미엄 연소 시스템입니다.', image: null, features: ['간결한 구조로 유지보수 용이', '소형/경량 설계', '빠른 기동 시간', '저온 연소로 안전성 확보', '경제적인 초기 투자비', '모듈형 확장 가능'], specs: { capacity: '100 ~ 10,000 Nm³/h', hours: '8~24시간 운전', install: '실내 설치 권장', temp: '0 ~ 100℃', pressure: '-300 ~ +300 mmAq', humidity: '0 ~ 90% RH' } },
+  { id: 'cco', category: 'catalytic', catName: '촉매연소', code: 'HSE-CCO-006', name: 'CCO', fullName: 'Concentrated CO', desc: '희박가스를 농축하여 CO로 처리하는 소형 고효율 시스템입니다.', image: null, features: ['소형화된 농축+촉매 시스템', '초저농도 처리 가능', '모듈형 설계', '이동식 설치 가능', '자동 운전 시스템', '경제적 운전비'], specs: { capacity: '2,000 ~ 30,000 Nm³/h', hours: '8~24시간 운전', install: '실내/실외 설치 가능', temp: '0 ~ 80℃', pressure: '-200 ~ +200 mmAq', humidity: '0 ~ 80% RH' } },
+  { id: 'to', category: 'oxidation', catName: '연소산화', code: 'HSE-TO-007', name: 'TO', fullName: 'Thermal Oxidizer', desc: '축열체 없이 직접 연소 방식으로 VOCs를 처리하는 고성능 시스템입니다.', image: null, features: ['고농도 VOCs 처리에 최적', '할로겐/황 화합물 처리', '열회수 보일러 연계', '간결한 구조', '신뢰성 높은 운전', '맞춤형 버너 설계'], specs: { capacity: '500 ~ 50,000 Nm³/h', hours: '24시간 연속 운전', install: '실내/실외 설치 가능', temp: '0 ~ 300℃', pressure: '-500 ~ +500 mmAq', humidity: '0 ~ 100% RH' } },
+  { id: 'r-vru', category: 'oxidation', catName: '유증기 소각', code: 'HSE-RVC-008', name: 'R-VCU', fullName: 'Regenerative Vapor Combustion Unit', desc: '유류 저장 탱크에서 발생하는 유증기를 축열식 연소로 처리하는 안전한 시스템입니다.', image: null, features: ['유증기 전용 설계', '폭발 방지 안전 시스템', '축열식 열회수', '자동 풍량 조절', '악취 동시 제거', '저녹스 버너 적용'], specs: { capacity: '100 ~ 10,000 Nm³/h', hours: '24시간 연속 운전', install: '실외 설치', temp: '-20 ~ 50℃', pressure: '-100 ~ +100 mmAq', humidity: '0 ~ 100% RH' } },
+  { id: 'pto', category: 'oxidation', catName: '플라즈마', code: 'HSE-PTO-009', name: 'PTO', fullName: 'Plasma Thermal Oxidizer', desc: '플라즈마 토치를 이용하여 초고온(3,000℃ 이상)으로 VOCs를 분해하는 첨단 시스템입니다.', image: null, features: ['초고온 플라즈마 처리', '극소형 설계', '즉시 기동/정지', '난분해성 물질 처리', 'NOx 발생 최소화', '고효율 에너지 전달'], specs: { capacity: '50 ~ 5,000 Nm³/h', hours: '간헐/연속 운전', install: '실내 설치 권장', temp: '0 ~ 200℃', pressure: '-300 ~ +300 mmAq', humidity: '0 ~ 95% RH' } },
+  { id: 'rpo', category: 'oxidation', catName: '플라즈마', code: 'HSE-RPO-010', name: 'RPO', fullName: 'Regenerative Plasma Oxidizer', desc: '축열식 열회수와 플라즈마 연소를 결합한 하이브리드 시스템입니다.', image: null, features: ['축열 + 플라즈마 하이브리드', '에너지 효율 극대화', '대용량 처리 가능', '다양한 농도 대응', '고효율 열회수', '첨단 제어 시스템'], specs: { capacity: '1,000 ~ 30,000 Nm³/h', hours: '24시간 연속 운전', install: '실내/실외 설치 가능', temp: '0 ~ 150℃', pressure: '-400 ~ +400 mmAq', humidity: '0 ~ 90% RH' } },
+  { id: 'mobile-catalyst', category: 'mobile', catName: '모듈형', code: 'HSE-MCA-011', name: '이동식 VOCs 복합촉매', fullName: 'Modular Mobile VOCs Catalyst', desc: '컨테이너 형태로 이동이 가능한 프리미엄 복합 촉매 처리 시스템입니다.', image: null, features: ['컨테이너 타입 이동식', '즉시 설치 및 가동', '복합 촉매 적용', '다양한 VOCs 동시 처리', '임시/상설 설치 가능', '트럭/트레일러 탑재'], specs: { capacity: '500 ~ 10,000 Nm³/h', hours: '8~24시간 운전', install: '이동식/상설', temp: '-10 ~ 50℃', pressure: '-200 ~ +200 mmAq', humidity: '0 ~ 95% RH' } },
+  { id: 'mobile-recovery', category: 'mobile', catName: '모듈형', code: 'HSE-MRE-012', name: '이동식 VOCs 회수', fullName: 'Modular Mobile VOCs Recovery', desc: '흡착 농축과 응축 회수를 결합한 프리미엄 이동식 시스템입니다.', image: null, features: ['흡착 농축 + 응축 회수', '용제 재활용 가능', '경제적 처리 비용', '컨테이너 이동식', '자동 제어 시스템', '다양한 용제 대응'], specs: { capacity: '1,000 ~ 20,000 Nm³/h', hours: '8~24시간 운전', install: '이동식/상설', temp: '0 ~ 40℃', pressure: '-300 ~ +300 mmAq', humidity: '0 ~ 80% RH' } },
+  { id: 'c-vru', category: 'recovery', catName: '응축회수', code: 'HSE-CVR-013', name: 'C-VRU', fullName: 'Cryogenic Vapor Recovery Unit', desc: '초저온 냉각(-100℃ 이하)을 이용하여 VOCs를 응축 회수하는 프리미엄 시스템입니다.', image: null, features: ['초저온 냉각 (-100℃ 이하)', '고순도 용제 회수', '냉매 최적화 설계', '캐스케이드 냉동 사이클', '자동 제어 시스템', '경제적 회수 비용'], specs: { capacity: '100 ~ 10,000 Nm³/h', hours: '24시간 연속 운전', install: '실내/실외 설치 가능', temp: '0 ~ 50℃', pressure: '0 ~ +1,000 mmAq', humidity: '0 ~ 100% RH' } },
+  { id: 'vru', category: 'recovery', catName: '유증기회수', code: 'HSE-VRU-014', name: 'VRU', fullName: 'Vapor Recovery Unit', desc: '유류 저장 탱크의 유증기를 흡착 농축 후 응축/흡수하여 회수하는 시스템입니다.', image: null, features: ['유류 증기 전용 설계', '흡착 농축 + 진공 탈착', '95% 이상 회수율', '폭발 방지 안전 시스템', '자동 운전', '경제성 우수'], specs: { capacity: '10 ~ 5,000 Nm³/h', hours: '24시간 연속 운전', install: '실외 설치', temp: '-20 ~ 50℃', pressure: '-100 ~ +500 mmAq', humidity: '0 ~ 100% RH' } },
+  { id: 'sru', category: 'recovery', catName: '활성탄재생', code: 'HSE-SRU-015', name: 'SRU', fullName: 'Solvent Recovery Unit', desc: '스팀을 이용하여 포화된 활성탄을 재생하고 용제를 회수하는 프리미엄 시스템입니다.', image: null, features: ['스팀 재생 방식', '활성탄 반복 사용', '고순도 용제 회수', '자동 재생 사이클', '다중 탑 시스템', '경제적 운전'], specs: { capacity: '500 ~ 50,000 Nm³/h', hours: '8~24시간 운전', install: '실내/실외 설치 가능', temp: '0 ~ 50℃', pressure: '-300 ~ +300 mmAq', humidity: '0 ~ 95% RH' } },
+  { id: 'hvrs', category: 'recovery', catName: '진공재생', code: 'HSE-HVR-016', name: 'HVRS', fullName: 'Hybrid Vacuum Regeneration System', desc: '진공과 스팀을 병행하여 활성탄을 재생하는 하이브리드 시스템입니다.', image: null, features: ['진공 + 스팀 하이브리드 재생', '스팀 소비량 절감', '고효율 용제 회수', '고비점 용제 처리 가능', '자동 재생 제어', '에너지 절감'], specs: { capacity: '500 ~ 30,000 Nm³/h', hours: '8~24시간 운전', install: '실내/실외 설치 가능', temp: '0 ~ 50℃', pressure: '-300 ~ +300 mmAq', humidity: '0 ~ 95% RH' } },
+  { id: 'vcu', category: 'recovery', catName: '연소처리', code: 'HSE-VCU-017', name: 'VCU', fullName: 'Vapor Combustion Unit', desc: '유류 저장 탱크의 유증기를 연소하여 처리하는 안전한 시스템입니다.', image: null, features: ['유증기 전용 연소 설계', '폭발 방지 안전 시스템', '저녹스 버너 적용', '자동 풍량 조절', '간결한 구조', '경제적 설치비'], specs: { capacity: '10 ~ 5,000 Nm³/h', hours: '24시간 연속 운전', install: '실외 설치', temp: '-20 ~ 50℃', pressure: '-100 ~ +100 mmAq', humidity: '0 ~ 100% RH' } },
+  { id: 'heat-exchanger', category: 'component', catName: '부품/장치', code: 'HSE-HEX-018', name: '특수재질 열교환기', fullName: 'Special Heat Exchanger', desc: '고온, 고압, 부식성 환경에서 사용되는 프리미엄 특수재질 열교환기와 압력용기입니다.', image: null, features: ['특수재질 적용 (SUS316L, 티타늄, 하스텔로이)', '고온/고압 설계', '부식성 환경 대응', 'ASME/KS 규격 준수', '맞춤형 설계', '품질 보증'], specs: { capacity: '설계 사양에 따라 다름', hours: '24시간 연속 운전', install: '실내/실외 설치', temp: '-200 ~ 1,200℃', pressure: '진공 ~ 100 bar', humidity: '모든 조건' } },
+  { id: 'methane-system', category: 'catalyst', catName: '복합촉매', code: 'HSE-MET-019', name: '메탄 저감시스템', fullName: 'Methane Reduction System', desc: '축산업, 폐기물 처리장 등에서 발생하는 메탄가스를 효과적으로 저감하는 프리미엄 시스템입니다.', image: null, features: ['촉매 산화 방식', '열 산화 방식', '고효율 메탄 분해', '에너지 회수 가능', '99% 이상 처리효율', '온실가스 저감'], specs: { capacity: '100 ~ 50,000 Nm³/h', hours: '24시간 연속 운전', install: '실내/실외 설치 가능', temp: '0 ~ 200℃', pressure: '-300 ~ +300 mmAq', humidity: '0 ~ 95% RH' } },
+  { id: 'pfc-system', category: 'catalyst', catName: '복합촉매', code: 'HSE-PFC-020', name: 'PFCs/PFAS 저감시스템', fullName: 'PFCs/PFAS Reduction System', desc: '반도체 및 플루오린화학 공정에서 발생하는 PFCs와 PFAS를 처리하는 첨단 시스템입니다.', image: null, features: ['플라즈마 처리 기술', '고온 연소 방식', '99.9% 처리효율', '반도체 전용 설계', '고순도 공정 대응', '극미량 배출'], specs: { capacity: '50 ~ 10,000 Nm³/h', hours: '24시간 연속 운전', install: '실내 설치 권장', temp: '0 ~ 150℃', pressure: '-200 ~ +200 mmAq', humidity: '0 ~ 80% RH' } },
+];
+
+// IndexedDB에서 이미지 로드
+function loadProductImageFromDB(productId, callback) {
+  var request = indexedDB.open('HSE_ImageDatabase', 2);
+  
+  request.onerror = function() {
+    callback(null);
+  };
+  
+  request.onsuccess = function(event) {
+    var db = event.target.result;
+    
+    // 저장소 확인
+    if (!db.objectStoreNames.contains('productImages')) {
+      callback(null);
+      db.close();
+      return;
+    }
+    
+    try {
+      var transaction = db.transaction(['productImages'], 'readonly');
+      var store = transaction.objectStore('productImages');
+      var getRequest = store.get(productId);
+      
+      getRequest.onsuccess = function() {
+        var result = getRequest.result;
+        if (result && result.images && result.images.length > 0) {
+          callback(result.images[0]);
+        } else {
+          callback(null);
+        }
+        db.close();
+      };
+      
+      getRequest.onerror = function() {
+        callback(null);
+        db.close();
+      };
+    } catch (e) {
+      callback(null);
+      db.close();
+    }
+  };
+  
+  request.onupgradeneeded = function(event) {
+    var db = event.target.result;
+    if (!db.objectStoreNames.contains('productImages')) {
+      db.createObjectStore('productImages', { keyPath: 'productId' });
+    }
+  };
+}
+
+// 모든 제품 이미지 로드
+function loadAllProductImages(callback) {
+  var request = indexedDB.open('HSE_ImageDatabase', 2);
+  
+  request.onerror = function() {
+    callback();
+  };
+  
+  request.onsuccess = function(event) {
+    var db = event.target.result;
+    
+    if (!db.objectStoreNames.contains('productImages')) {
+      callback();
+      db.close();
+      return;
+    }
+    
+    try {
+      var transaction = db.transaction(['productImages'], 'readonly');
+      var store = transaction.objectStore('productImages');
+      var getRequest = store.getAll();
+      
+      getRequest.onsuccess = function() {
+        var data = getRequest.result;
+        for (var i = 0; i < data.length; i++) {
+          var item = data[i];
+          if (item.images && item.images.length > 0) {
+            var product = productsData.find(function(p) { return p.id === item.productId; });
+            if (product) {
+              product.image = item.images[0];
+            }
+          }
+        }
+        callback();
+        db.close();
+      };
+      
+      getRequest.onerror = function() {
+        callback();
+        db.close();
+      };
+    } catch (e) {
+      callback();
+      db.close();
+    }
+  };
+  
+  request.onupgradeneeded = function(event) {
+    var db = event.target.result;
+    if (!db.objectStoreNames.contains('productImages')) {
+      db.createObjectStore('productImages', { keyPath: 'productId' });
+    }
+  };
+}
+
+// IndexedDB 열기 헬퍼
+function openDB(name, version) {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(name, version);
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => resolve(request.result);
+    request.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains('product_images')) {
+        db.createObjectStore('product_images', { keyPath: 'id' });
+      }
+    };
+  });
+}
+
+// 제품 필터링 - 즉시 표시 후 이미지 로드
+function filterProducts(category) {
+  console.log('filterProducts called:', category);
+  
+  var list = document.getElementById('productList');
+  if (!list) {
+    console.error('productList element not found');
+    return;
+  }
+  
+  // 먼저 제품 목록 표시 (이미지 없이)
+  var filtered = category === 'all' ? productsData : productsData.filter(function(p) { 
+    return p.category === category; 
+  });
+  
+  console.log('Filtered products:', filtered.length);
+  
+  var html = '';
+  for (var i = 0; i < filtered.length; i++) {
+    var p = filtered[i];
+    
+    html += '<div class="product-premium-card" data-product-id="' + p.id + '" onclick="cardClick(\'' + p.id + '\')">';
+    html += '<div class="product-image-container">';
+    html += '<span class="product-category-tag">' + p.catName + '</span>';
+    html += '<div class="product-image-wrapper" id="img-wrapper-' + p.id + '">';
+    html += '<div class="product-image-placeholder"><span class="icon">🏭</span><span>' + p.name + '</span></div>';
+    html += '</div>';
+    html += '<div class="product-image-overlay"><div class="view-detail-btn">상세 정보 보기</div></div>';
+    html += '</div>';
+    html += '<div class="product-premium-content">';
+    html += '<div class="product-premium-code">' + p.code + '</div>';
+    html += '<h4 class="product-premium-name">' + p.name + '</h4>';
+    html += '<div class="product-premium-en">' + p.fullName + '</div>';
+    html += '<p class="product-premium-desc">' + p.desc + '</p>';
+    html += '<div class="product-premium-footer">';
+    html += '<div style="font-size: 13px; color: var(--gray);">⚡ ' + p.specs.capacity.split(' ')[0] + '</div>';
+    html += '<div class="arrow-icon">→</div>';
+    html += '</div>';
+    html += '</div>';
+    html += '</div>';
+  }
+  list.innerHTML = html;
+  
+  // 탭 활성화 상태 업데이트
+  var tabs = document.querySelectorAll('.premium-tab');
+  for (var j = 0; j < tabs.length; j++) {
+    tabs[j].classList.remove('active');
+    var onclickAttr = tabs[j].getAttribute('onclick');
+    if (onclickAttr && onclickAttr.indexOf("'" + category + "'") !== -1) {
+      tabs[j].classList.add('active');
+    }
+  }
+  
+  // IndexedDB에서 이미지 로드 (비동기)
+  loadAllProductImages(function() {
+    console.log('Images loaded, updating display');
+    for (var k = 0; k < filtered.length; k++) {
+      var prod = filtered[k];
+      if (prod.image) {
+        var wrapper = document.getElementById('img-wrapper-' + prod.id);
+        if (wrapper) {
+          wrapper.innerHTML = '<img src="' + prod.image + '" alt="' + prod.name + '" class="product-premium-image">';
+        }
+      }
+    }
+  });
+}
+
+// 카드 클릭 함수
+function cardClick(productId) {
+  console.log('카드 클릭:', productId);
+  openModal(productId);
+}
+
+// 모달 열기
+function openModal(productId) {
+  var product = productsData.find(function(p) { return p.id === productId; });
+  if (!product) {
+    console.error('Product not found:', productId);
+    return;
+  }
+  
+  var modal = document.getElementById('productModal');
+  var hero = document.getElementById('modalHero');
+  var body = document.getElementById('modalBodyContent');
+  
+  if (!modal || !hero || !body) {
+    console.error('Modal elements not found');
+    return;
+  }
+  
+  // 이미지가 있으면 표시, 없으면 플레이스홀더
+  var imageHtml = product.image ?
+    '<img src="' + product.image + '" alt="' + product.name + '" class="modal-hero-image">' :
+    '<div class="modal-hero-placeholder"><span class="icon">🏭</span><span>제품 이미지 준비중입니다</span></div>';
+  
+  hero.innerHTML = '<button class="modal-close-btn" onclick="closeModal()">×</button>' +
+    '<div class="modal-category-badge">' + product.catName + '</div>' +
+    imageHtml;
+  
+  // 특징 목록 생성
+  var featuresHtml = '<div class="features-grid-premium">';
+  for (var i = 0; i < product.features.length; i++) {
+    featuresHtml += '<div class="feature-premium-item"><div class="feature-check">✓</div><span>' + product.features[i] + '</span></div>';
+  }
+  featuresHtml += '</div>';
+  
+  // 모달 내용 생성
+  body.innerHTML = '<div class="modal-header-section">' +
+    '<div class="modal-product-code">' + product.code + '</div>' +
+    '<h2 class="modal-product-name">' + product.name + '</h2>' +
+    '<div class="modal-product-en">' + product.fullName + '</div>' +
+    '</div>' +
+    '<div class="modal-section">' +
+    '<div class="modal-section-title"><span class="icon">📋</span>제품 개요</div>' +
+    '<div class="modal-desc">' + product.desc + '</div>' +
+    '</div>' +
+    '<div class="modal-section">' +
+    '<div class="modal-section-title"><span class="icon">✓</span>주요 특징</div>' + featuresHtml +
+    '</div>' +
+    '<div class="modal-section">' +
+    '<div class="modal-section-title"><span class="icon">⚙️</span>기술 사양</div>' +
+    '<table class="specs-premium-table">' +
+    '<tr><th>처리용량</th><td>' + product.specs.capacity + '</td></tr>' +
+    '<tr><th>운전시간</th><td>' + product.specs.hours + '</td></tr>' +
+    '<tr><th>설치형태</th><td>' + product.specs.install + '</td></tr>' +
+    '<tr><th>입구온도</th><td>' + product.specs.temp + '</td></tr>' +
+    '<tr><th>압력</th><td>' + product.specs.pressure + '</td></tr>' +
+    '<tr><th>습도</th><td>' + product.specs.humidity + '</td></tr>' +
+    '</table>' +
+    '</div>' +
+    '<div class="modal-actions-premium">' +
+    '<a href="inquiry.html" class="btn-premium btn-gold"><span>견적 문의하기</span><span>→</span></a>' +
+    '<button class="btn-premium btn-outline" onclick="closeModal()">닫기</button>' +
+    '</div>';
+  
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  
+  // IndexedDB에서 이미지 다시 로드 (최신 이미지 표시)
+  loadProductImageFromDB(productId, function(imageData) {
+    if (imageData) {
+      product.image = imageData;
+      var imgElement = hero.querySelector('.modal-hero-image');
+      if (imgElement) {
+        imgElement.src = imageData;
+      } else {
+        // 플레이스홀더를 이미지로 교체
+        var placeholder = hero.querySelector('.modal-hero-placeholder');
+        if (placeholder) {
+          placeholder.outerHTML = '<img src="' + imageData + '" alt="' + product.name + '" class="modal-hero-image">';
+        }
+      }
+    }
+  });
+}
+
+// 모달 닫기
+function closeModal() {
+  document.getElementById('productModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// 외부 클릭 시 닫기
+window.onclick = function(event) {
+  const modal = document.getElementById('productModal');
+  if (event.target === modal) {
+    closeModal();
+  }
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+  // 제품 목록 먼저 표시 (이미지 없이)
+  filterProducts('all');
+  
+  // 제품 카드 클릭 이벤트 위임
+  var productList = document.getElementById('productList');
+  if (productList) {
+    productList.addEventListener('click', function(e) {
+      var card = e.target.closest('.product-premium-card');
+      if (card) {
+        var productId = card.getAttribute('data-product-id');
+        if (productId) {
+          console.log('제품 클릭:', productId);
+          openModal(productId);
+        }
+      }
+    });
+  }
+  
+  // 모바일 메뉴 토글
+  var mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  var navDesktop = document.querySelector('.nav-desktop');
+  
+  if (mobileMenuBtn && navDesktop) {
+    mobileMenuBtn.addEventListener('click', function() {
+      navDesktop.classList.toggle('mobile-active');
+      if (navDesktop.classList.contains('mobile-active')) {
+        navDesktop.style.display = 'flex';
+        navDesktop.style.flexDirection = 'column';
+        navDesktop.style.position = 'absolute';
+        navDesktop.style.top = '80px';
+        navDesktop.style.left = '0';
+        navDesktop.style.right = '0';
+        navDesktop.style.background = 'rgba(10,15,26,0.98)';
+        navDesktop.style.padding = '20px';
+        navDesktop.style.zIndex = '999';
+      } else {
+        navDesktop.style.display = '';
+      }
+    });
+    
+    // 메뉴 링크 클릭 시 닫기
+    var navLinks = navDesktop.querySelectorAll('a');
+    for (var i = 0; i < navLinks.length; i++) {
+      navLinks[i].addEventListener('click', function() {
+        navDesktop.classList.remove('mobile-active');
+        navDesktop.style.display = '';
+      });
+    }
+  }
+});
+</script>
+
+</body>
+</html>
